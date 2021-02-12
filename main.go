@@ -25,4 +25,7 @@ func main() {
 
 	result := port.ScanPort("tcp", "localhost", portInt)
 	fmt.Println(result)
+
+	fmt.Println("Start scan between ports 1024 and 8080")
+	port.ScanAllPorts(1024, 8080)
 }
