@@ -29,6 +29,15 @@ func ScanAllPorts(initialPort, finalPort int) {
 			fmt.Println(ret)
 		}
 	}
+}
 
-	fmt.Println("Scan is done")
+func AllPorts() {
+	go ScanAllPorts(1, 10000)
+	go ScanAllPorts(10001, 20000)
+	go ScanAllPorts(20001, 30000)
+	go ScanAllPorts(30001, 40000)
+	go ScanAllPorts(40001, 50000)
+	go ScanAllPorts(50001, 60000)
+	ScanAllPorts(60001, 64435)
+
 }

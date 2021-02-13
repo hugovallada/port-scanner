@@ -23,7 +23,8 @@ func main() {
 
 	if strings.TrimSpace(ans) == "all" {
 		fmt.Println("Scanning ports 1 to 64435")
-		port.ScanAllPorts(1, 64435)
+		//port.ScanAllPorts(1, 64435)
+		port.AllPorts()
 	} else {
 
 		fmt.Println("What port do you whant check?")
