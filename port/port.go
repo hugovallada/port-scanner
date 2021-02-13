@@ -21,3 +21,14 @@ func ScanPort(protocol, hostname string, port int) string {
 	return fmt.Sprintf("The port %d is open", port)
 
 }
+
+// ScanAllPorts resturns
+func ScanAllPorts(initialPort, finalPort int) {
+	for i := initialPort; i <= finalPort; i++ {
+		if ret := ScanPort("tcp", "localhost", i); ret == fmt.Sprintf("The port %d is open", i) {
+			fmt.Println(ret)
+		}
+	}
+
+	fmt.Println("Scan is done")
+}
