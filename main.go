@@ -11,21 +11,31 @@ import (
 )
 
 func main() {
-	fmt.Println("Scanning ports...")
+	fmt.Println("Welcome to the port scanner v0.0.1")
 
 	reader := bufio.NewReader(os.Stdin)
-	fmt.Println("What port do you whant check?")
-	portToCheck, err := reader.ReadString('\n')
-
-	portInt, _ := strconv.Atoi(strings.TrimSpace(portToCheck))
+	fmt.Println("Do you want to check an specific port, or check all ports ? (spe/all)")
+	ans, err := reader.ReadString('\n')
 
 	if err != nil {
 		panic("Something went wrong")
 	}
 
-	result := port.ScanPort("tcp", "localhost", portInt)
-	fmt.Println(result)
+	if strings.TrimSpace(ans) == "all" {
+		fmt.Println("Scanning ports 1 to 64435")
+		port.ScanAllPorts(1, 64435)
+	} else {
 
-	fmt.Println("Start scan between ports 1024 and 8080")
-	port.ScanAllPorts(1024, 8080)
+		fmt.Println("What port do you whant check?")
+		portToCheck, err := reader.ReadString('\n')
+
+		portInt, _ := strconv.Atoi(strings.TrimSpace(portToCheck))
+
+		if err != nil {
+			panic("Something went wrong")
+		}
+
+		result := port.ScanPort("tcp", "localhost", portInt)
+		fmt.Println(result)
+	}
 }
