@@ -39,5 +39,4 @@ func AllPorts() {
 	go ScanAllPorts(40001, 50000)
 	go ScanAllPorts(50001, 60000)
 	ScanAllPorts(60001, 64435)
-
 }
